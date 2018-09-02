@@ -5,7 +5,7 @@ require "spree/razorpay/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "spree-razorpay"
-  spec.version       = Spree::Razorpay::VERSION
+  spec.version       = SpreeRazorpay::VERSION
   spec.authors       = ["Neeraj Kumar"]
   spec.email         = ["neeraj.kumar@gmail.com"]
 
