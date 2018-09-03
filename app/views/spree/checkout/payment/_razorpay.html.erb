@@ -1,8 +1,4 @@
 <%= form_tag('/purchase', method: :post) do %>
   <%= hidden_field_tag :payment_method_id, payment_method.id %>  
-  <%= hidden_field_tag :product_id, @product.id %>
-  <%= hidden_field_tag :user_id, spree_current_user.try(:id) %>
-  <%= hidden_field_tag :amount, @product.price %>
-  <%= hidden_field_tag :description, @product.description.truncate(254) %>
-  <%= hidden_field_tag :image, @product.images.first.mini_url %>  
+  <%= submit_tag 'Pay With Razorpay', id: 'razorpay_button', class: 'btn btn-md btn-primary pull-right' %>
 <% end %>
