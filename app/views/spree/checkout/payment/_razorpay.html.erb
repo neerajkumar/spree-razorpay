@@ -1,12 +1,14 @@
 <%= payment_method.inspect %>
 
+<%= Razorpay.setup(payment_method.preferences[:key_id], payment_method.preferences[:key_secret]) %>
+
 <div class="col-xs-4">
   <div class="product-summary">
     <h3>Automatic checkout</h3>
     <form action="/purchase" method="POST">
       <script
          src="https://checkout.razorpay.com/v1/checkout.js"
-         data-key="<%= ENV['RAZORPAY_KEY_ID'] %>"
+         data-key="<%= payment_method.preferences[:key_id] %>"
 
          data-amount="<%= current_order.amount_in_paise %>"
          data-theme.color="#F37254"
@@ -18,7 +20,7 @@
 <script>
 $(document).ready(function(){
   var options = {
-      "key": "<%= ENV['RAZORPAY_KEY_ID'] %>",
+      "key": "<%= payment_method.preferences[:key_id] %>",
       "amount": "<%= current_order.amount_in_paise %>",
       "handler": function (response){
         var mapForm = document.createElement("form");
