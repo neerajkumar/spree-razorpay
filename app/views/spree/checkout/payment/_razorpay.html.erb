@@ -1,4 +1,52 @@
-<%= form_tag('/purchase', method: :post) do %>
-  <%= hidden_field_tag :payment_method_id, payment_method.id %>  
-  <%= submit_tag 'Pay With Razorpay', id: 'razorpay_button', class: 'btn btn-md btn-primary pull-right' %>
-<% end %>
+<%= payment_method.inspect %>
+
+<div class="col-xs-4">
+  <div class="product-summary">
+    <h3>Automatic checkout</h3>
+    <form action="/purchase" method="POST">
+      <script
+         src="https://checkout.razorpay.com/v1/checkout.js"
+         data-key="<%= ENV['RAZORPAY_KEY_ID'] %>"
+
+         data-amount="<%= current_order.amount_in_paise %>"
+         data-theme.color="#F37254"
+        ></script>
+    </form><br>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+  var options = {
+      "key": "<%= ENV['RAZORPAY_KEY_ID'] %>",
+      "amount": "<%= current_order.amount_in_paise %>",
+      "handler": function (response){
+        var mapForm = document.createElement("form");
+        mapForm.target = "_self";
+        mapForm.method = "POST"; // or "post" if appropriate
+        mapForm.action = "/purchase";
+
+        var mapInput = document.createElement("input");
+        mapInput.type = "text";
+        mapInput.name = "payment_id";
+        mapInput.value = response.razorpay_payment_id;
+        mapForm.appendChild(mapInput);
+
+        mapForm.appendChild(mapInput);
+
+        mapForm.submit();
+
+      },
+      "prefill": {
+          "name": "<%= spree_current_user.try(:email) %>",
+          "email": "<%= spree_current_user.try(:email) %>"
+      },
+      "notes": {
+          "address": "Hello World"
+      },
+      "theme": {
+          "color": "#198F69"
+      }
+  };
+});
+</script>
