@@ -8,7 +8,7 @@ module Spree
     end
 
     def provider_class
-      ActiveMerchant::Billing::Razorpay
+      self
     end
 
     def provider
