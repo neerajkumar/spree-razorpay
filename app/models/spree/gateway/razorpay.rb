@@ -8,11 +8,11 @@ module Spree
     end
 
     def provider_class
-      Spree::Gateway::Razorpay
+      self.class
     end
 
     def provider
-      Spree::Gateway::Razorpay
+      @provider = self
     end
 
     def auto_capture?

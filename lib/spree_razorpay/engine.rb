@@ -18,7 +18,7 @@ module SpreeRazorpay
     end
 
     initializer 'spree.gateway.payment_methods',
-      :after => 'spree.register.payment_methods' do |app|
+      after: 'spree.register.payment_methods' do |app|
       app.config.spree.payment_methods << Spree::Gateway::Razorpay
     end
 
