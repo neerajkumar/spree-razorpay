@@ -1,22 +1,17 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Actor" rel="stylesheet" type="text/css">
 <%= payment_method.inspect %>
 
-<%= Razorpay.setup(payment_method.preferences[:key_id], payment_method.preferences[:key_secret]) %>
+<% Razorpay.setup(payment_method.preferences[:key_id], payment_method.preferences[:key_secret]) %>
 
-<div class="col-xs-4">
-  <div class="product-summary">
-    <h3>Automatic checkout</h3>
-    <%= form_tag('/purchase', method: :post) do %>
-      <script
-         src="https://checkout.razorpay.com/v1/checkout.js"
-         data-key="<%= payment_method.preferences[:key_id] %>"
+<%= form_tag('/purchase', method: :post) do %>
+  <script
+     src="https://checkout.razorpay.com/v1/checkout.js"
+     data-key="<%= payment_method.preferences[:key_id] %>"
 
-         data-amount="<%= current_order.amount_in_paise %>"
-         data-theme.color="#F37254"
-        ></script>      
-    <% end %>
-  </div>
-</div>
+     data-amount="<%= current_order.amount_in_paise %>"
+     data-theme.color="#F37254"
+    ></script>
+<% end %>
 
 <script>
 $(document).ready(function(){
@@ -33,8 +28,6 @@ $(document).ready(function(){
         mapInput.type = "text";
         mapInput.name = "payment_id";
         mapInput.value = response.razorpay_payment_id;
-        mapForm.appendChild(mapInput);
-
         mapForm.appendChild(mapInput);
 
         mapForm.submit();
