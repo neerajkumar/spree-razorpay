@@ -1,0 +1,89 @@
+<h4>Processing ...</h4>
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Actor" rel="stylesheet" type="text/css">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2">
+    </div>
+    <div class="col-xs-4">
+      <div class="product-summary">
+        <h3>Automatic checkout</h3>
+        <form action="/purchase" method="POST" name="checkout_form">
+        <script
+            src="https://checkout.razorpay.com/v1/checkout.js"
+            data-key="<%= ENV['RAZORPAY_KEY_ID'] %>"
+
+            data-amount="<%= @product.price_in_paise %>"
+            data-description="<%= @product.description.truncate(254) %>"
+            data-image="<%= @product.images.first.mini_url %>"
+
+            data-prefill.name="<%= spree_current_user.try(:email) %>"
+            data-prefill.email="<%= spree_current_user.try(:email) %>"
+            data-theme.color="#F37254"
+        >
+        </script>
+        <input type="hidden" value="<%= @product.id %>" name="product_id">
+        <input type="hidden" value="<%= spree_current_user.try(:id) %>" name="user_id">
+        </form><br>
+      </div>
+    <div>
+  </div>
+  </div>
+  </div>
+</div>
+<script>
+$(document).ready(function(){
+  var options = {
+      "key": "<%= ENV['RAZORPAY_KEY_ID'] %>",
+      "amount": "<%= @product.price_in_paise %>",
+      "description": "<%= @product.description.truncate(254) %>",
+      "image": "<%= @product.images.first.mini_url %>",
+      "handler": function (response){
+        var mapForm = document.createElement("form");
+        mapForm.target = "_self";
+        mapForm.method = "POST"; // or "post" if appropriate
+        mapForm.action = "/purchase";
+
+        var mapInput = document.createElement("input");
+        mapInput.type = "text";
+        mapInput.name = "payment_id";
+        mapInput.value = response.razorpay_payment_id;
+        mapForm.appendChild(mapInput);
+
+        var mapInput2 = document.createElement("input");
+        mapInput2.type = "text";
+        mapInput2.name = "user_id";
+        mapInput2.value = "<%= spree_current_user.try(:id) %>";
+
+        var mapInput3 = document.createElement("input");
+        mapInput3.type = "text";
+        mapInput3.name = "product_id";
+        mapInput3.value = "<%= @product.id %>";
+
+        mapForm.appendChild(mapInput);
+        mapForm.appendChild(mapInput2);
+        mapForm.appendChild(mapInput3);
+
+        mapForm.submit();
+
+      },
+      "prefill": {
+          "name": "<%= spree_current_user.try(:email) %>",
+          "email": "<%= spree_current_user.try(:email) %>"
+      },
+      "notes": {
+          "address": "Hello World"
+      },
+      "theme": {
+          "color": "#198F69"
+      }
+  };
+  $("#rzp-button1").click(function(e){
+    var rzp1 = new Razorpay(options);
+      rzp1.open();
+      e.preventDefault();
+  });
+
+});
+</script>
+
