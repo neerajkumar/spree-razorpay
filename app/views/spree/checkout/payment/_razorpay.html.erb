@@ -6,15 +6,15 @@
 <div class="col-xs-4">
   <div class="product-summary">
     <h3>Automatic checkout</h3>
-    <form action="/purchase" method="POST">
+    <%= form_tag('/purchase', method: :post) do %>
       <script
          src="https://checkout.razorpay.com/v1/checkout.js"
          data-key="<%= payment_method.preferences[:key_id] %>"
 
          data-amount="<%= current_order.amount_in_paise %>"
          data-theme.color="#F37254"
-        ></script>
-    </form><br>
+        ></script>      
+    <% end %>
   </div>
 </div>
 
