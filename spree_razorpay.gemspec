@@ -4,13 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "spree_razorpay/version"
 
 Gem::Specification.new do |spec|
+  spec.platform      = Gem::Platform::RUBY
   spec.name          = "spree_razorpay"
   spec.version       = SpreeRazorpay::VERSION
   spec.authors       = ["Neeraj Kumar"]
   spec.email         = ["neeraj.kumar@gmail.com"]
 
   spec.summary       = %q{Razorpay integration into spree application.}
-  spec.description   = %q{Razorpay integration into spree application.}
+  spec.description   = spec.summary
   spec.homepage      = "https://github.com/neerajkumar/spree-razorpay"
   spec.license       = "MIT"
 
@@ -29,6 +30,7 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+  spec.requirements << 'none'
 
   spec.add_dependency 'spree_core'
 
