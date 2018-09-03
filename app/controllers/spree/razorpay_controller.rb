@@ -8,7 +8,8 @@ module Spree
     end
 
     def purchase_status
-      order = Spree::Order.process_razorpayment(params)
+      @order = Spree::Order.process_razorpayment(params)
+      redirect_to order_path(@order)
     end
   end
 end
