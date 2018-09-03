@@ -8,11 +8,11 @@ module Spree
     end
 
     def provider_class
-      self
+      Spree::Gateway::Razorpay
     end
 
     def provider
-      self
+      Spree::Gateway::Razorpay
     end
 
     def auto_capture?
@@ -31,8 +31,5 @@ module Spree
       'DEFAULT'
     end
 
-    def name
-      'Spree::Gateway::Razorpay'
-    end
   end
 end
