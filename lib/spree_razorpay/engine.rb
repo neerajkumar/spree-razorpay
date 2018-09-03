@@ -19,8 +19,8 @@ module SpreeRazorpay
 
     config.to_prepare &method(:activate).to_proc
 
-    initializer "spree.gateway",
-    after: "spree.register.payment_methods" do |app|
+    initializer 'spree.gateway',
+    after: 'spree.register.payment_methods' do |app|
       app.config.spree.payment_methods << Spree::Gateway::Razorpay
     end
   end
