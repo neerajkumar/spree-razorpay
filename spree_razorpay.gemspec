@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "spree_razorpay/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "spree-razorpay"
+  spec.name          = "spree_razorpay"
   spec.version       = SpreeRazorpay::VERSION
   spec.authors       = ["Neeraj Kumar"]
   spec.email         = ["neeraj.kumar@gmail.com"]
