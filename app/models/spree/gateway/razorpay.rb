@@ -8,11 +8,11 @@ module Spree
     end
 
     def provider_class
-      self.class
+      self
     end
 
     def provider
-      @provider = self
+      self
     end
 
     def auto_capture?

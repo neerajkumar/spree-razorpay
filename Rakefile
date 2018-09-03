@@ -15,4 +15,5 @@ task :test_app do
   Rake::Task['extension:test_app'].invoke
 end
 
+require 'spree/testing_support/extension_rake'
 Bundler::GemHelper.install_tasks
