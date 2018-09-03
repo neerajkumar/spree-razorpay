@@ -30,5 +30,9 @@ module Spree
     def request_type
       'DEFAULT'
     end
+
+    def name
+      'Spree::Gateway::Razorpay'
+    end
   end
 end
