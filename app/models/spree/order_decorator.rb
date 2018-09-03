@@ -15,6 +15,6 @@ Spree::Order.class_eval do
   end
 
   def amount_in_paise
-    amount.to_f * 100
+    (amount.to_f * 100).to_i
   end
 end
