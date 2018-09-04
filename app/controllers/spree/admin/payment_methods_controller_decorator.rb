@@ -5,7 +5,6 @@ Spree::Admin::PaymentMethodsController.class_eval do
   private
 
   def setup_razorpay
-    Rails.logger.info ">>>>>>>>>>>>>>>>>#{params[:gateway_razorpay]}"
-    Razorpay.setup(params[:gateway_razorpay][:preferred_key_id], params[:gateway_razorpay][:preferred_key_secret])
+    Razorpay.setup(params[:gateway_razorpay_gateway][:preferred_key_id], params[:gateway_razorpay_gateway][:preferred_key_secret])
   end
 end
