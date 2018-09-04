@@ -1,5 +1,5 @@
 module Spree
-  class Gateway::Razorpay < Gateway
+  class Gateway::RazorpayGateway < Gateway
     preference :key_id, :string
     preference :key_secret, :string
     preference :merchant_name, :string

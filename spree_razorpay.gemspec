@@ -33,9 +33,9 @@ Gem::Specification.new do |spec|
   spec.requirements << 'none'
 
   spec.add_dependency 'spree_core'
+  spec.add_dependency 'razorpay'
 
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "minitest", "~> 5.0"
-  spec.add_development_dependency 'razorpay'
 end
