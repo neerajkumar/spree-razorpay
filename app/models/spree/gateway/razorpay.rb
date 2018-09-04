@@ -1,7 +1,10 @@
 module Spree
   class Gateway::Razorpay < Gateway
-    preference :key_id, :string
-    preference :key_secret, :string
+    preference :key_id, :string, null: false
+    preference :key_secret, :string, null: false
+    preference :merchant_name, :string, null: true
+    preference :merchant_description, :text, limit: 254, null: true
+    preference :merchant_address, :text, null: true
 
     def supports?(source)
       true
