@@ -20,8 +20,6 @@ Spree::Order.class_eval do
     (amount.to_f * 100).to_i
   end
 
-  private_class_method :setup_razorpay, :payment
-
   def self.setup_razorpay(payment_method)
     Razorpay.setup(payment_method.preferences[:key_id], payment_method.preferences[:key_secret])
   end
@@ -46,4 +44,5 @@ Spree::Order.class_eval do
       )
   end
 
+  private_class_method :setup_razorpay, :payment
 end
