@@ -20,13 +20,13 @@ Spree::Order.class_eval do
     (amount.to_f * 100).to_i
   end
 
-  private_class_method
+  private_class_method :setup_razorpay, :payment
 
-  def setup_razorpay(payment_method)
+  def self.setup_razorpay(payment_method)
     Razorpay.setup(payment_method.preferences[:key_id], payment_method.preferences[:key_secret])
   end
 
-  def payment(order, payment_object)
+  def self.payment(order, payment_object)
     order.payments.create!(
       source: Spree::RazorpayCheckout.create(
         order_id: order.id,
