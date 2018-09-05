@@ -5,7 +5,7 @@ Spree::Order.class_eval do
     setup_razorpay(payment_method)
     razorpay_pmnt_obj = Razorpay::Payment.fetch(params[:razorpay_payment_id])
     status = razorpay_pmnt_obj.status
-    payment = payment(order, razorpay_pmnt_obj)
+    payment = payment(order, razorpay_pmnt_obj, payment_method)
     if status == "authorized"
       razorpay_pmnt_obj.capture({ amount: order.amount_in_paise })
       razorpay_pmnt_obj = Razorpay::Payment.fetch(params[:razorpay_payment_id])
@@ -24,7 +24,7 @@ Spree::Order.class_eval do
     Razorpay.setup(payment_method.preferences[:key_id], payment_method.preferences[:key_secret])
   end
 
-  def self.payment(order, payment_object)
+  def self.payment(order, payment_object, payment_method)
     order.payments.create!(
       source: Spree::RazorpayCheckout.create(
         order_id: order.id,

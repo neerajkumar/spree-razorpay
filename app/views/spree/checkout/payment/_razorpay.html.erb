@@ -45,7 +45,7 @@ $(document).ready(function(){
             "address": "<%= payment_method.preferences[:merchant_address] %>"
         },
         "theme": {
-            "color": "#198F69"
+            "color": "<%= payment_method.preferences[:theme_color] %>"
         }
       };
       var rzp1 = new Razorpay(options);
