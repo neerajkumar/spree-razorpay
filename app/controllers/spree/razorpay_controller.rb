@@ -7,7 +7,7 @@ module Spree
       @product = Spree::Product.last
     end
 
-    def purchase_status
+    def create
       payment_method = Spree::PaymentMethod.find(params[:payment_method_id])
 
       @order = Spree::Order.process_razorpayment(params)

@@ -11,6 +11,8 @@ class CreateSpreeRazorpayCheckouts < ActiveRecord::Migration
       t.string :vpa
       t.string :email
       t.string :contact
+
+      t.timestamps
     end
   end
 end
