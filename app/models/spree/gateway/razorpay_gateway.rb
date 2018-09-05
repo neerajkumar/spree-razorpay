@@ -5,6 +5,7 @@ module Spree
     preference :merchant_name, :string
     preference :merchant_description, :text
     preference :merchant_address, :string
+    preference :theme_color, :string, default: '#F37254'
 
     def supports?(source)
       true

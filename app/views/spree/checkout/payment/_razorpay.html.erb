@@ -1,48 +1,56 @@
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Actor" rel="stylesheet" type="text/css">
-<%= payment_method.inspect %>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="http://malsup.github.io/jquery.blockUI.js"></script>
 
-<% Razorpay.setup(payment_method.preferences[:key_id], payment_method.preferences[:key_secret]) %>
+  <div id='razorpay' class='btn btn-primary'>
+    Pay by Razorpay
+  </div>
 
-<%= form_tag('/purchase', method: :post) do %>
-  <script
-     src="https://checkout.razorpay.com/v1/checkout.js"
-     data-key="<%= payment_method.preferences[:key_id] %>"
-
-     data-amount="<%= current_order.amount_in_paise %>"
-     data-theme.color="#F37254"
-    ></script>
-<% end %>
-
+  <div id='blockUI-message' style='display: none;'>
+    <h1>
+      <b>HOLDON!</b>
+      While we connect you back to merchant's site
+    </h1>
+  </div>
+  
 <script>
 $(document).ready(function(){
-  var options = {
-      "key": "<%= payment_method.preferences[:key_id] %>",
-      "amount": "<%= current_order.amount_in_paise %>",
-      "handler": function (response){
-        var mapForm = document.createElement("form");
-        mapForm.target = "_self";
-        mapForm.method = "POST"; // or "post" if appropriate
-        mapForm.action = "/purchase";
 
-        var mapInput = document.createElement("input");
-        mapInput.type = "text";
-        mapInput.name = "payment_id";
-        mapInput.value = response.razorpay_payment_id;
-        mapForm.appendChild(mapInput);
-
-        mapForm.submit();
-
-      },
-      "prefill": {
-          "name": "<%= spree_current_user.try(:email) %>",
-          "email": "<%= spree_current_user.try(:email) %>"
-      },
-      "notes": {
-          "address": "Hello World"
-      },
-      "theme": {
-          "color": "#198F69"
-      }
-  };
+  $("#razorpay").click(function() {
+    var options = {
+        "key": "<%= payment_method.preferences[:key_id] %>",
+        "amount": "<%= current_order.amount_in_paise %>",
+        'name': "<%= payment_method.preferences[:merchant_name] %>",
+        'description': "<%= payment_method.preferences[:merchant_description] %>",
+        "handler": function (response){
+          $(document).ajaxStart(function() {
+            $.blockUI({ message: $('#blockUI-message') });
+          });
+          $.ajax({
+            type: 'POST',
+            url: "/razorpay",
+            data: { payment_method_id: "<%= payment_method.id %>", razorpay_payment_id: response.razorpay_payment_id },
+            dataType: 'html'
+          }).done(function(data){
+            $.blockUI({ message: $('#blockUI-message') });
+            setTimeout(function(){
+              window.location.replace("/orders/<%= current_order.number %>");
+            }, 5000);
+          });
+        },
+        "prefill": {
+            "name": "<%= spree_current_user.try(:email) %>",
+            "email": "<%= spree_current_user.try(:email) %>"
+        },
+        "notes": {
+            "address": "<%= payment_method.preferences[:merchant_address] %>"
+        },
+        "theme": {
+            "color": "#198F69"
+        }
+      };
+      var rzp1 = new Razorpay(options);
+      rzp1.open();
+  });
+  
 });
 </script>
