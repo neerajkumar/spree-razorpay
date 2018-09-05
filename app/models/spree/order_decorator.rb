@@ -16,6 +16,10 @@ Spree::Order.class_eval do
     end
   end
 
+  def amount_in_paise
+    (amount.to_f * 100).to_i
+  end
+
   private_class_method
 
   def setup_razorpay(payment_method)
