@@ -1,0 +1,12 @@
+.razorpay-payment-button {
+  background: url(asset_path('PayWithRzp.png')) center no-repeat;
+  background-size: contain;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  font-size: 0;
+  height: 36px;
+  width: 230px;
+  padding: 0;
+  cursor: pointer;
+}
