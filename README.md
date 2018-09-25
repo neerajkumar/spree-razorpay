@@ -26,10 +26,10 @@ Restart your server
 
 Add new payment method with provider
 
-        Spree::Gateway::RazorpayGateway
+     Spree::Gateway::RazorpayGateway
 
-Get Key ID and Key Secret from your razorpay sandbox account. If you don't have it you can sign up and get from
-https://dashboard.razorpay.com/#/app/keys.
+Get **Key ID** and **Key Secret** from your razorpay sandbox account. If you don't have it you can sign up and get from
+[https://dashboard.razorpay.com/#/app/keys](https://dashboard.razorpay.com/#/app/keys).
 
 ## Development
 
