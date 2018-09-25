@@ -1,6 +1,6 @@
 # SpreeRazorpay
 
-Razorpay payment gateway integration for spree
+Razorpay payment gateway integration for Spree
 
 ## Installation
 
@@ -28,12 +28,8 @@ Add new payment method with provider
 
         Spree::Gateway::RazorpayGateway
 
-get Key ID and Key Secret from your razorpay sandbox account. If you don't have it you can sign up and get from
+Get Key ID and Key Secret from your razorpay sandbox account. If you don't have it you can sign up and get from
 https://dashboard.razorpay.com/#/app/keys.
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Development
 
