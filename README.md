@@ -1,26 +1,35 @@
 # SpreeRazorpay
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/spree_razorpay`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Razorpay payment gateway integration for spree
 
 ## Installation
-
-This gem is still under progres..
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'spree-razorpay'
+gem 'spree_razorpay'
 ```
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
 Or install it yourself as:
 
     $ gem install spree-razorpay
+
+Add migrations from extension:
+
+     $ rails g spree_paytm:install
+
+Restart your server
+
+Add new payment method with provider
+
+        Spree::Gateway::RazorpayGateway
+
+get Key ID and Key Secret from your razorpay sandbox account. If you don't have it you can sign up and get from
+https://dashboard.razorpay.com/#/app/keys.
 
 ## Usage
 
