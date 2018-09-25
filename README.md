@@ -16,11 +16,11 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install spree-razorpay
+    $ gem install spree_razorpay
 
 Add migrations from extension:
 
-     $ rails g spree_paytm:install
+     $ rails g spree_razorpay:install
 
 Restart your server
 
