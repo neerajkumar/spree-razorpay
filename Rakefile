@@ -16,4 +16,4 @@ task :test_app do
 end
 
 require 'spree/testing_support/extension_rake'
-Bundler::GemHelper.install_tasks
+
