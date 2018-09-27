@@ -1,4 +1,4 @@
-class CreateSpreeRazorpayCheckouts < ActiveRecord::Migration
+class CreateSpreeRazorpayCheckouts < ActiveRecord::Migration[5.2]
   def change
     create_table :spree_razorpay_checkouts do |t|
       t.string :order_id

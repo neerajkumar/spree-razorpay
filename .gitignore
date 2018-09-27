@@ -6,3 +6,5 @@
 /pkg/
 /spec/reports/
 /tmp/
+/spec/dummy/
+.byebug_history

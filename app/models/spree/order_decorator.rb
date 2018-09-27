@@ -12,7 +12,7 @@ Spree::Order.class_eval do
       payment.update(response_code: razorpay_pmnt_obj.status)
       razorpay_pmnt_obj.status
     else
-      raise StandardError, "Unable to capture payment"
+      raise StandardError, 'Unable to capture payment'
     end
   end
 

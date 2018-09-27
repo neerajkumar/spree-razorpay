@@ -1,0 +1,283 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.razorpay.com/v1/payments/pay_B2LESkluKR1eHQ
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Razorpay-Ruby/2.3.0
+      Authorization:
+      - Basic cnpwX3Rlc3RfdWtvajZSZE1CM0g1M1c6RTc3UXpYZmdkOXk2S1Y2V3BHTVk0Nzg4
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-store, nocache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 27 Sep 2018 18:41:46 GMT
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache/2.4.34 (Unix)
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Length:
+      - '512'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"id":"pay_B2LESkluKR1eHQ","entity":"payment","amount":1200,"currency":"INR","status":"authorized","order_id":null,"invoice_id":null,"international":false,"method":"card","amount_refunded":0,"refund_status":null,"captured":false,"description":"Mycomics
+        merchant","card_id":"card_B2LETmjQJvaNws","bank":null,"wallet":null,"vpa":null,"email":"neeraj.kumar@gmail.com","contact":"+919717000553","notes":{"address":"Bangalore"},"fee":null,"tax":null,"error_code":null,"error_description":null,"created_at":1537953808}'
+    http_version: 
+  recorded_at: Thu, 27 Sep 2018 18:41:46 GMT
+- request:
+    method: post
+    uri: https://api.razorpay.com/v1/payments/pay_B2LESkluKR1eHQ/capture
+    body:
+      encoding: UTF-8
+      string: amount=1998
+    headers:
+      User-Agent:
+      - Razorpay-Ruby/2.3.0
+      Authorization:
+      - Basic cnpwX3Rlc3RfdWtvajZSZE1CM0g1M1c6RTc3UXpYZmdkOXk2S1Y2V3BHTVk0Nzg4
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-store, nocache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 27 Sep 2018 18:49:53 GMT
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache/2.4.34 (Unix)
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Length:
+      - '125'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"BAD_REQUEST_ERROR","description":"Capture amount
+        must be equal to the amount authorized","field":"amount"}}'
+    http_version: 
+  recorded_at: Thu, 27 Sep 2018 18:49:54 GMT
+- request:
+    method: post
+    uri: https://api.razorpay.com/v1/payments/pay_B2LESkluKR1eHQ/capture
+    body:
+      encoding: UTF-8
+      string: amount=1200
+    headers:
+      User-Agent:
+      - Razorpay-Ruby/2.3.0
+      Authorization:
+      - Basic cnpwX3Rlc3RfdWtvajZSZE1CM0g1M1c6RTc3UXpYZmdkOXk2S1Y2V3BHTVk0Nzg4
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-store, nocache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 27 Sep 2018 19:16:48 GMT
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache/2.4.34 (Unix)
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Length:
+      - '668'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"id":"pay_B2LESkluKR1eHQ","entity":"payment","amount":1200,"currency":"INR","status":"captured","order_id":null,"invoice_id":null,"international":false,"method":"card","amount_refunded":0,"refund_status":null,"captured":true,"description":"Mycomics
+        merchant","card_id":"card_B2LETmjQJvaNws","card":{"id":"card_B2LETmjQJvaNws","entity":"card","name":"dgdfhdf","last4":"1111","network":"Visa","type":"debit","issuer":null,"international":false,"emi":false},"bank":null,"wallet":null,"vpa":null,"email":"neeraj.kumar@gmail.com","contact":"+919717000553","notes":{"address":"Bangalore"},"fee":24,"tax":0,"error_code":null,"error_description":null,"created_at":1537953808}'
+    http_version: 
+  recorded_at: Thu, 27 Sep 2018 19:16:48 GMT
+- request:
+    method: post
+    uri: https://api.razorpay.com/v1/payments/pay_B2LESkluKR1eHQ/capture
+    body:
+      encoding: UTF-8
+      string: amount=1300
+    headers:
+      User-Agent:
+      - Razorpay-Ruby/2.3.0
+      Authorization:
+      - Basic cnpwX3Rlc3RfdWtvajZSZE1CM0g1M1c6RTc3UXpYZmdkOXk2S1Y2V3BHTVk0Nzg4
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-store, nocache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 27 Sep 2018 19:17:24 GMT
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache/2.4.34 (Unix)
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Length:
+      - '125'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"BAD_REQUEST_ERROR","description":"Capture amount
+        must be equal to the amount authorized","field":"amount"}}'
+    http_version: 
+  recorded_at: Thu, 27 Sep 2018 19:17:24 GMT
+- request:
+    method: post
+    uri: https://api.razorpay.com/v1/payments/pay_B2LESkluKR1eHQ/capture
+    body:
+      encoding: UTF-8
+      string: amount=1200
+    headers:
+      User-Agent:
+      - Razorpay-Ruby/2.3.0
+      Authorization:
+      - Basic cnpwX3Rlc3RfdWtvajZSZE1CM0g1M1c6RTc3UXpYZmdkOXk2S1Y2V3BHTVk0Nzg4
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-store, nocache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 27 Sep 2018 19:17:32 GMT
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache/2.4.34 (Unix)
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Length:
+      - '178'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"BAD_REQUEST_ERROR","description":"This payment has
+        already been captured","field":{"payment_id":"B2LESkluKR1eHQ","status":"captured","captured_at":1538075808}}}'
+    http_version: 
+  recorded_at: Thu, 27 Sep 2018 19:17:32 GMT
+- request:
+    method: post
+    uri: https://api.razorpay.com/v1/payments/pay_B2LESkluKR1eHQ/capture
+    body:
+      encoding: UTF-8
+      string: amount=1200
+    headers:
+      User-Agent:
+      - Razorpay-Ruby/2.3.0
+      Authorization:
+      - Basic cnpwX3Rlc3RfdWtvajZSZE1CM0g1M1c6RTc3UXpYZmdkOXk2S1Y2V3BHTVk0Nzg4
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-store, nocache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 27 Sep 2018 19:17:47 GMT
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache/2.4.34 (Unix)
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Length:
+      - '178'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"BAD_REQUEST_ERROR","description":"This payment has
+        already been captured","field":{"payment_id":"B2LESkluKR1eHQ","status":"captured","captured_at":1538075808}}}'
+    http_version: 
+  recorded_at: Thu, 27 Sep 2018 19:17:47 GMT
+- request:
+    method: post
+    uri: https://api.razorpay.com/v1/payments/pay_B2LESkluKR1eHQ/capture
+    body:
+      encoding: UTF-8
+      string: amount=1200
+    headers:
+      User-Agent:
+      - Razorpay-Ruby/2.3.0
+      Authorization:
+      - Basic cnpwX3Rlc3RfdWtvajZSZE1CM0g1M1c6RTc3UXpYZmdkOXk2S1Y2V3BHTVk0Nzg4
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-store, nocache, private
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 27 Sep 2018 19:18:18 GMT
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache/2.4.34 (Unix)
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Length:
+      - '178'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"BAD_REQUEST_ERROR","description":"This payment has
+        already been captured","field":{"payment_id":"B2LESkluKR1eHQ","status":"captured","captured_at":1538075808}}}'
+    http_version: 
+  recorded_at: Thu, 27 Sep 2018 19:18:18 GMT
+recorded_with: VCR 4.0.0

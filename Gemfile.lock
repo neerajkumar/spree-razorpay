@@ -1,3 +1,14 @@
+GIT
+  remote: git://github.com/spree/spree_auth_devise.git
+  revision: 54bba0cc60d23e650df624b7b274b02795d2154e
+  branch: master
+  specs:
+    spree_auth_devise (3.4.0)
+      devise (~> 4.4.0)
+      devise-encryptable (= 0.2.0)
+      spree_core (>= 3.1.0, < 4.0)
+      spree_extension
+
 PATH
   remote: .
   specs:
@@ -63,26 +74,50 @@ GEM
     arel (9.0.0)
     awesome_nested_set (3.1.4)
       activerecord (>= 4.0.0, < 5.3)
+    bcrypt (3.1.12)
     builder (3.2.3)
+    byebug (10.0.2)
     camertron-eprun (1.1.1)
-    cancancan (2.2.0)
+    cancancan (2.3.0)
     carmen (1.0.2)
       activesupport (>= 3.0.0)
     cldr-plurals-runtime-rb (1.0.1)
     climate_control (0.2.0)
+    coffee-rails (4.2.2)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.4)
     css_parser (1.6.0)
       addressable
-    deface (1.3.0)
-      nokogiri (~> 1.6)
+    database_cleaner (1.7.0)
+    deface (1.3.1)
+      nokogiri (>= 1.6)
       polyglot
       rails (>= 4.1)
       rainbow (>= 2.1.0)
+    devise (4.4.3)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 6.0)
+      responders
+      warden (~> 1.2.3)
+    devise-encryptable (0.2.0)
+      devise (>= 2.1.0)
     diff-lcs (1.3)
     erubi (1.7.1)
+    execjs (2.7.0)
+    factory_bot (4.11.1)
+      activesupport (>= 3.0.0)
+    factory_bot_rails (4.11.1)
+      factory_bot (~> 4.11.1)
+      railties (>= 3.0.0)
     ffaker (2.10.0)
     friendly_id (5.2.4)
       activerecord (>= 4.0.0)
@@ -112,7 +147,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
-    marcel (0.3.2)
+    marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (0.9.0)
     mime-types (3.2.2)
@@ -131,6 +166,7 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
+    orm_adapter (0.5.0)
     paperclip (6.0.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
@@ -139,8 +175,6 @@ GEM
       terrapin (~> 0.6.0)
     paranoia (2.4.1)
       activerecord (>= 4.0, < 5.3)
-    polyamorous (1.3.3)
-      activerecord (>= 3.0)
     polyglot (0.3.5)
     premailer (1.11.1)
       addressable
@@ -179,21 +213,16 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (3.0.0)
     rake (10.5.0)
-    ransack (1.8.8)
-      actionpack (>= 3.0)
-      activerecord (>= 3.0)
-      activesupport (>= 3.0)
+    ransack (2.0.1)
+      actionpack (>= 5.0)
+      activerecord (>= 5.0)
+      activesupport (>= 5.0)
       i18n
-      polyamorous (~> 1.3.2)
     razorpay (2.3.0)
       httparty (~> 0.14)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rspec (3.8.0)
-      rspec-core (~> 3.8.0)
-      rspec-expectations (~> 3.8.0)
-      rspec-mocks (~> 3.8.0)
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.1)
@@ -202,9 +231,17 @@ GEM
     rspec-mocks (3.8.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
+    rspec-rails (3.8.0)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
+      rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
     safe_yaml (1.0.4)
-    spree_core (3.6.3)
+    spree_core (3.6.4)
       activemerchant (~> 1.67)
       acts-as-taggable-on (~> 6.0)
       acts_as_list (~> 0.8)
@@ -221,13 +258,15 @@ GEM
       paperclip (~> 6.0.0)
       paranoia (~> 2.4.1)
       premailer-rails
-      rails (= 5.2.0)
-      ransack (~> 1.8.0)
+      rails (~> 5.2.0)
+      ransack (~> 2.0.1)
       responders
       sprockets-rails
       state_machines-activerecord (~> 0.5)
       stringex
       twitter_cldr (~> 4.3)
+    spree_extension (0.0.5)
+      activerecord (>= 4.2)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -235,6 +274,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sqlite3 (1.3.13)
     state_machines (0.5.0)
     state_machines-activemodel (0.5.1)
       activemodel (>= 4.1, < 6.0)
@@ -254,6 +294,8 @@ GEM
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     vcr (4.0.0)
+    warden (1.2.7)
+      rack (>= 1.0)
     webmock (3.4.2)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -267,12 +309,20 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.16)
+  byebug
+  coffee-rails
+  database_cleaner
+  factory_bot_rails
+  ffaker
   minitest (~> 5.0)
   rake (~> 10.0)
   razorpay
-  rspec
-  spree_core
+  rspec-rails
+  spree_auth_devise!
+  spree_core (>= 3.1.0, < 4.0)
+  spree_extension
   spree_razorpay!
+  sqlite3
   vcr
   webmock
 
