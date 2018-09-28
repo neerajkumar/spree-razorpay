@@ -14,7 +14,7 @@ group :test do
   gem 'spree_frontend'
   gem 'rails-controller-testing'
   unless ENV['WITHOUT_SPREE_AUTH_DEVISE'] == 'true'
-    gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: 'master'
+    gem 'spree_auth_devise'
   end
   gem 'coffee-rails'
 end

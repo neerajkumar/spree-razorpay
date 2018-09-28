@@ -1,18 +1,7 @@
-GIT
-  remote: git://github.com/spree/spree_auth_devise.git
-  revision: 54bba0cc60d23e650df624b7b274b02795d2154e
-  branch: master
-  specs:
-    spree_auth_devise (3.4.0)
-      devise (~> 4.4.0)
-      devise-encryptable (= 0.2.0)
-      spree_core (>= 3.1.0, < 4.0)
-      spree_extension
-
 PATH
   remote: .
   specs:
-    spree_razorpay (0.1.4)
+    spree_razorpay (0.2.0)
       razorpay
       spree_core
 
@@ -267,6 +256,11 @@ GEM
       rabl (~> 0.13.1)
       spree_core (= 3.6.4)
       versioncake (~> 3.4.0)
+    spree_auth_devise (3.4.1)
+      devise (~> 4.4.0)
+      devise-encryptable (= 0.2.0)
+      spree_core (>= 3.1.0, < 4.0)
+      spree_extension
     spree_core (3.6.4)
       activemerchant (~> 1.67)
       acts-as-taggable-on (~> 6.0)
@@ -351,7 +345,7 @@ DEPENDENCIES
   rake (~> 10.0)
   razorpay
   rspec-rails
-  spree_auth_devise!
+  spree_auth_devise
   spree_core (>= 3.1.0, < 4.0)
   spree_extension
   spree_frontend

@@ -1,5 +1,7 @@
 # SpreeRazorpay
 
+[![Build Status](https://travis-ci.org/neerajkumar/spree-razorpay.svg?branch=master)](https://travis-ci.org/neerajkumar/spree-razorpay)
+
 Razorpay payment gateway integration for Spree
 
 ## Installation
