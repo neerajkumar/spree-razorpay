@@ -7,10 +7,7 @@ require 'byebug'
 require 'ffaker'
 require 'spree_core'
 require 'spree_extension'
-
-# Requires supporting ruby files with custom matchers and macros, etc,
-# in spec/support/ and its subdirectories.
-Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
+require 'spree_frontend'
 
 # Requires factories and other useful helpers defined in spree_core.
 require 'spree/testing_support/controller_requests'

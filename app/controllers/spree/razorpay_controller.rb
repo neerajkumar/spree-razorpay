@@ -15,9 +15,9 @@ module Spree
         @error = false
         @redirect_path = order_path(@order)
       else
-        @order.update_attributes(payment_state: "failed")
+        @order.update_attributes(payment_state: 'failed')
         @error = true
-        @message = "There was an error processing your payment"
+        @message = 'There was an error processing your payment'
         @redirect_path = checkout_state_path(@order.state)
       end
     end

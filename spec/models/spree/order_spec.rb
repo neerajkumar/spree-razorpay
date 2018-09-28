@@ -1,37 +1,20 @@
 require 'spec_helper'
+require 'shared/new_razorpay_payment'
 
-describe Spree::Order, :vcr do
+describe Spree::Order, type: :model do
 
-  let(:gateway) { create(:razorpay_gateway) }
+  let(:razorpay_payment) { create(:razorpay_payment) }
 
   let(:params) do
     {
-      payment_method_id: gateway.id,
+      payment_method_id: razorpay_payment.id,
       razorpay_payment_id: 'pay_12345abcdeFGHI'
     }
   end
 
-  let(:attributes) do
-    {
-      id: 'pay_12345abcdeFGHI',
-      entity: 'payment',
-      amount: 1200,
-      currency: 'INR',
-      status: 'authorized',
-      international: false,
-      method: 'card',
-      amount_refunded: 0,
-      captured: false,
-      card_id: 'card_12345abcdeFGHI',
-      bank: nil,
-      wallet: nil,
-      vpa: nil,
-      email: FFaker::Internet.email,
-      contact: FFaker::PhoneNumber.phone_number
-      }
-  end
-
   let(:order) { OrderWalkthrough.up_to(:payment) }
+
+  include_context 'new_razorpay_payment_spec'
 
   describe '.amount_in_paise' do
     subject { order.amount_in_paise }
@@ -76,27 +59,5 @@ describe Spree::Order, :vcr do
         expect { subject }.to raise_error(StandardError)
       end
     end
-  end
-
-  private
-
-  def new_razorpay_payment(attributes)
-    Razorpay::Payment.new(
-      attributes[:id],
-      attributes[:entity],
-      attributes[:amount],
-      attributes[:currency],
-      attributes[:status],
-      attributes[:international],
-      attributes[:method],
-      attributes[:amount_refunded],
-      attributes[:captured],
-      attributes[:card_id],
-      attributes[:bank],
-      attributes[:wallet],
-      attributes[:vpa],
-      attributes[:email],
-      attributes[:contact]
-    )
   end
 end
