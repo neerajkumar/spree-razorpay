@@ -4,4 +4,5 @@ rvm:
   - 2.5.0
 before_install: gem install bundler -v 1.16.1
 script:
+  - 'bundle exec rake test_app'
   - 'bundle exec rspec spec'
