@@ -4,6 +4,8 @@ gem 'razorpay'
 gem 'spree_core', '>= 3.1.0', '< 4.0'
 gem 'byebug'
 
+gem 'sassc-rails'
+
 group :test do
   gem 'sqlite3'
   gem 'rspec-rails'
