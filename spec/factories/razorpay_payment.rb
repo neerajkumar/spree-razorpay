@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :razorpay_payment, class: Spree::PaymentMethod do
-    type 'Spree::Gateway::RazorpayGateway'
-    name 'Razorpay (For Wallet, Netbanking, Credit Card and UPI)'
-    description 'Razorpay Payment Gateway'
-    active true
+    type { 'Spree::Gateway::RazorpayGateway' }
+    name { 'Razorpay (For Wallet, Netbanking, Credit Card and UPI)' }
+    description { 'Razorpay Payment Gateway' }
+    active { true }
     before(:create) do |payment|
       payment.preferences[:key_id] = 'rzp_test_12345abcdeFGHI'
       payment.preferences[:key_secret] = 'ABCDEFGH12345678ijklmnop'
