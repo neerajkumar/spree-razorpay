@@ -7,7 +7,7 @@ module Spree
       response_status = Spree::Order.process_razorpayment(params, current_order)
       @order = current_order
       if response_status == 'captured'
-        @order.next
+        @order.next!
         @message = Spree.t(:order_processed_successfully)
         @current_order = nil
         flash.notice = Spree.t(:order_processed_successfully)
