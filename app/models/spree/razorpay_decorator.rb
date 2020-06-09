@@ -1,7 +1,6 @@
 module Spree
   module RazorpayDecorator
-    class << self
-    def process_razorpayment(params, order)
+    def self.process_razorpayment(params, order)
       payment_method = Spree::PaymentMethod.find(params[:payment_method_id])
       setup_razorpay(payment_method)
       razorpay_pmnt_obj = Razorpay::Payment.fetch(params[:razorpay_payment_id])
@@ -22,11 +21,11 @@ module Spree
       (amount.to_f * 100).to_i
     end
 
-    def setup_razorpay(payment_method)
+    def self.setup_razorpay(payment_method)
       Razorpay.setup(payment_method.preferences[:key_id], payment_method.preferences[:key_secret])
     end
 
-    def payment(order, payment_object, payment_method)
+    def self.payment(order, payment_object, payment_method)
       order.payments.create!(
         source: Spree::RazorpayCheckout.create(
           order_id: order.id,
@@ -45,8 +44,8 @@ module Spree
         response_code: payment_object.status
       )
     end
+    private_class_method :setup_razorpay, :payment
   end
-end
 end
 
 Spree::Order.prepend Spree::RazorpayDecorator
