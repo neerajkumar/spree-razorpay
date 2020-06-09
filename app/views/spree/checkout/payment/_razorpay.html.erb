@@ -1,17 +1,7 @@
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<script src="http://malsup.github.io/jquery.blockUI.js"></script>
 
   <div id='razorpay' class='btn razorpay-payment-button pull-right'>
     Pay by Razorpay
-  </div>
-
-  <div id='blockUI-message' style='display: none;'>
-    <h1>
-      <b>HOLDON!</b>
-      While we connect you back to merchant's site
-    </h1>
   </div>
   
 <script>
@@ -24,9 +14,6 @@ $(document).ready(function(){
         'name': "<%= payment_method.preferences[:merchant_name] %>",
         'description': "<%= payment_method.preferences[:merchant_description] %>",
         "handler": function (response){
-          $(document).ajaxStart(function() {
-            $.blockUI({ message: $('#blockUI-message') });
-          });
           $.ajax({
             type: 'POST',
             url: "/razorpay",
