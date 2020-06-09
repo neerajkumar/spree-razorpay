@@ -1,5 +1,6 @@
 module Spree
   module RazorpayDecorator
+    class << self
     def process_razorpayment(params, order)
       payment_method = Spree::PaymentMethod.find(params[:payment_method_id])
       setup_razorpay(payment_method)
@@ -45,6 +46,7 @@ module Spree
       )
     end
   end
+end
 end
 
 Spree::Order.prepend Spree::RazorpayDecorator
