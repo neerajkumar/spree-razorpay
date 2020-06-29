@@ -47,7 +47,7 @@ module Spree
 
     included do
       def amount_in_paise
-        (amount.to_f * 100).to_i
+        (total.to_f * 100).to_i
       end
     end
   end
