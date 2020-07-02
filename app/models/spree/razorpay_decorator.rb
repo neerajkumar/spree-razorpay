@@ -26,22 +26,22 @@ module Spree
 
       def payment(order, payment_object, payment_method)
         order.payments.create!(
-                               source: Spree::RazorpayCheckout.create(
-                                                                      order_id: order.id,
-                                                                      razorpay_payment_id: payment_object.id,
-                                                                      status: payment_object.status,
-                                                                      payment_method: payment_object.method,
-                                                                      card_id: payment_object.card_id,
-                                                                      bank: payment_object.bank,
-                                                                      wallet: payment_object.wallet,
-                                                                      vpa: payment_object.vpa,
-                                                                      email: payment_object.email,
-                                                                      contact: payment_object.contact
-                                                                     ),
-                               payment_method: payment_method,
-                               amount: order.total,
-                               response_code: payment_object.status
-                              )
+          source: Spree::RazorpayCheckout.create(
+            order_id: order.id,
+            razorpay_payment_id: payment_object.id,
+            status: payment_object.status,
+            payment_method: payment_object.method,
+            card_id: payment_object.card_id,
+            bank: payment_object.bank,
+            wallet: payment_object.wallet,
+            vpa: payment_object.vpa,
+            email: payment_object.email,
+            contact: payment_object.contact
+          ),
+          payment_method: payment_method,
+          amount: order.total,
+          response_code: payment_object.status
+        )
       end
     end
 
