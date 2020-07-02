@@ -1,56 +1,44 @@
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<script src="http://malsup.github.io/jquery.blockUI.js"></script>
 
-  <div id='razorpay' class='btn razorpay-payment-button pull-right'>
-    Pay by Razorpay
-  </div>
+<div id='razorpay' class='btn razorpay-payment-button pull-right razorpay-init'>
+  Pay by Razorpay
+</div>
 
-  <div id='blockUI-message' style='display: none;'>
-    <h1>
-      <b>HOLDON!</b>
-      While we connect you back to merchant's site
-    </h1>
-  </div>
-  
 <script>
-$(document).ready(function(){
+ $(document).ready(function() {
+   $(".razorpay-init").click(function() {
+     var options = {
+       "key": "<%= payment_method.preferences[:key_id] %>",
+       "amount": "<%= current_order.amount_in_paise %>",
+       'name': "<%= payment_method.preferences[:merchant_name] %>",
+       'description': "<%= payment_method.preferences[:merchant_description] %>",
+       "handler": function (response){
+         $.ajax({
+           type: 'POST',
+           url: "/razorpay",
+           data: { payment_method_id: "<%= payment_method.id %>", razorpay_payment_id: response.razorpay_payment_id },
+           dataType: 'html'
+         }).done(function(data) {
+           setTimeout(function(){
+             window.location.replace("/orders/<%= current_order.number %>");
+           }, 100);
+         });
+       },
+       "prefill": {
+         "name": "<%= spree_current_user.try(:email) %>",
+         "email": "<%= spree_current_user.try(:email) %>"
+       },
+       "notes": {
+         "address": "<%= payment_method.preferences[:merchant_address] %>"
+       },
+       "theme": {
+         "color": "<%= payment_method.preferences[:theme_color] %>"
+       }
+     };
+     var rzp1 = new Razorpay(options);
+     rzp1.open();
+   });
 
-  $("#razorpay").click(function() {
-    var options = {
-        "key": "<%= payment_method.preferences[:key_id] %>",
-        "amount": "<%= current_order.amount_in_paise %>",
-        'name': "<%= payment_method.preferences[:merchant_name] %>",
-        'description': "<%= payment_method.preferences[:merchant_description] %>",
-        "handler": function (response){
-          $(document).ajaxStart(function() {
-            $.blockUI({ message: $('#blockUI-message') });
-          });
-          $.ajax({
-            type: 'POST',
-            url: "/razorpay",
-            data: { payment_method_id: "<%= payment_method.id %>", razorpay_payment_id: response.razorpay_payment_id },
-            dataType: 'html'
-          }).done(function(data){
-            $.blockUI({ message: $('#blockUI-message') });
-            setTimeout(function(){
-              window.location.replace("/orders/<%= current_order.number %>");
-            }, 5000);
-          });
-        },
-        "prefill": {
-            "name": "<%= spree_current_user.try(:email) %>",
-            "email": "<%= spree_current_user.try(:email) %>"
-        },
-        "notes": {
-            "address": "<%= payment_method.preferences[:merchant_address] %>"
-        },
-        "theme": {
-            "color": "<%= payment_method.preferences[:theme_color] %>"
-        }
-      };
-      var rzp1 = new Razorpay(options);
-      rzp1.open();
-  });
-  
-});
+ });
 </script>
