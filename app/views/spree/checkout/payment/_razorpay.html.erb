@@ -25,7 +25,7 @@ $(document).ready(function(){
         'description': "<%= payment_method.preferences[:merchant_description] %>",
         "handler": function (response){
           $(document).ajaxStart(function() {
-            $.blockUI({ message: $('#blockUI-message') });
+            $.fn.blockUI({ message: $('#blockUI-message') });
           });
           $.ajax({
             type: 'POST',
@@ -33,7 +33,7 @@ $(document).ready(function(){
             data: { payment_method_id: "<%= payment_method.id %>", razorpay_payment_id: response.razorpay_payment_id },
             dataType: 'html'
           }).done(function(data){
-            $.blockUI({ message: $('#blockUI-message') });
+            $.fn.blockUI({ message: $('#blockUI-message') });
             setTimeout(function(){
               window.location.replace("/orders/<%= current_order.number %>");
             }, 5000);
