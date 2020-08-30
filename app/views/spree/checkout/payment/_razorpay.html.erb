@@ -1,4 +1,5 @@
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+<script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-3.3.1.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script src="http://malsup.github.io/jquery.blockUI.js"></script>
@@ -25,7 +26,7 @@ $(document).ready(function(){
         'description': "<%= payment_method.preferences[:merchant_description] %>",
         "handler": function (response){
           $(document).ajaxStart(function() {
-            $.fn.blockUI({ message: $('#blockUI-message') });
+            $.blockUI({ message: $('#blockUI-message') });
           });
           $.ajax({
             type: 'POST',
@@ -33,7 +34,7 @@ $(document).ready(function(){
             data: { payment_method_id: "<%= payment_method.id %>", razorpay_payment_id: response.razorpay_payment_id },
             dataType: 'html'
           }).done(function(data){
-            $.fn.blockUI({ message: $('#blockUI-message') });
+            $.blockUI({ message: $('#blockUI-message') });
             setTimeout(function(){
               window.location.replace("/orders/<%= current_order.number %>");
             }, 5000);
