@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    spree_razorpay (0.2.1)
+    spree_razorpay (0.2.2)
       razorpay
       spree_core
 
