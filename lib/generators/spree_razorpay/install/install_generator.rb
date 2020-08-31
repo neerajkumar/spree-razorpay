@@ -4,6 +4,12 @@ module SpreeRazorpay
 
       class_option :auto_run_migrations, :type => :boolean, :default => false
 
+      def add_javascripts
+        append_file 'vendor/assets/javascripts/spree/frontend/all.js', "//= require spree/frontend/jquery-1.12.4.min.js\n"
+        append_file 'vendor/assets/javascripts/spree/frontend/all.js', "//= require spree/frontend/checkout.js\n"
+        append_file 'vendor/assets/javascripts/spree/frontend/all.js', "//= require spree/frontend/jquery.blockUI.js\n"
+      end
+
       def add_stylesheets
         if File.exists?('vendor/assets/stylesheets/spree/frontend/all.css')
           inject_into_file 'vendor/assets/stylesheets/spree/frontend/all.css', " *= require spree/razorpay\n", :before => /\*\//, :verbose => true
