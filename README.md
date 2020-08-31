@@ -33,10 +33,6 @@ Add new payment method with provider
 Get **Key ID** and **Key Secret** from your razorpay sandbox account. If you don't have it you can sign up and get from
 [https://dashboard.razorpay.com/#/app/keys](https://dashboard.razorpay.com/#/app/keys).
 
-## Demo
-
-![Spree razorpay](app/assets/images/razorpay-demo.gif)
-
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
