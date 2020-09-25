@@ -35,7 +35,7 @@ Get **Key ID** and **Key Secret** from your razorpay sandbox account. If you don
 
 ## Demo
 
-<img src="/assets/images/spree-razorpay-demo.gif" alt="Spree Razorpay Demo" width="740" height="338" class='img-responsive'>
+<img src="app/assets/images/spree-razorpay-demo.gif" alt="Spree Razorpay Demo" width="740" height="338" class='img-responsive'>
 
 ## Development
 
