@@ -5,8 +5,7 @@ module SpreeRazorpay
       class_option :auto_run_migrations, :type => :boolean, :default => false
 
       def add_javascripts
-        append_file 'vendor/assets/javascripts/spree/frontend/all.js', "//= require spree/frontend/jquery-1.12.4.min.js\n"
-        append_file 'vendor/assets/javascripts/spree/frontend/all.js', "//= require spree/frontend/checkout.js\n"
+        append_file 'vendor/assets/javascripts/spree/frontend/all.js', "//= require spree/frontend/razorPay.js\n"
         append_file 'vendor/assets/javascripts/spree/frontend/all.js', "//= require spree/frontend/jquery.blockUI.js\n"
       end
 
