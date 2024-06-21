@@ -21,7 +21,7 @@ describe Spree::Order, type: :model do
 
     it 'returns amount in paise' do
       expect(subject).to_not be_nil
-      amount_in_paise = (order.amount.to_f * 100).to_i
+      amount_in_paise = (order.total.to_f * 100).to_i
       expect(subject).to eq(amount_in_paise)
     end
   end
